@@ -124,7 +124,7 @@ public class Lab1 {
     // ----------------------------=3.7=------------------------------------------
     public static void square(int x) {
         for (int i = 0; i < x; i++) {
-            for (int j = 0; j < x; j++) System.out.print("*");
+            for (int j = 0; j < x; j++) {System.out.print("*");}
             System.out.print("\n");
         }
     }
@@ -154,21 +154,19 @@ public class Lab1 {
 
     // ----------------------------=4.3=------------------------------------------
     public static int maxAbs(int[] arr) {
-        int max_abs_num = 0, max_abs = 0;
+        int max_abs = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] < 0) {
                 if (max_abs < arr[i] * (-1)) {
-                    max_abs_num = i;
                     max_abs = arr[i] * (-1);
                 }
             } else {
                 if (max_abs < arr[i]) {
-                    max_abs_num = i;
                     max_abs = arr[i];
                 }
             }
         }
-        return arr[max_abs_num];
+        return max_abs;
     }
 
     // ----------------------------=4.5=------------------------------------------

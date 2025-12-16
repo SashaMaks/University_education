@@ -45,6 +45,6 @@ public class Circle extends Shape {
 
     // Преобразование в строку
     public String toString() {
-        return "Круг с центром " + center + ", с радиусом " + radius + ", площадь " + calculateArea();
+        return "Круг с центром " + center.toString() + ", с радиусом " + radius + ", площадь " + calculateArea();
     }
 }

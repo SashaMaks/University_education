@@ -64,6 +64,6 @@ public class Square extends Shape {
 
     // Преобразование в строку
     public String toString() {
-        return "Квадрат в точке " + topLeft.toString() + ", со стороной " + side + ", площадь=" + calculateArea();
+        return "Квадрат в точке " + topLeft.toString() + ", со стороной " + side + ", площадь " + calculateArea();
     }
 }

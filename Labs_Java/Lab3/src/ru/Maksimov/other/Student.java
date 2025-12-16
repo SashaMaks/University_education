@@ -35,7 +35,7 @@ public class Student {
         String out = name + ": [";
 
         for (int i = 0; i < grades.length; i++) {
-            out = out + i;
+            out = out + grades[i];
             if (i < grades.length - 1) {
                 out = out + ", ";
             }

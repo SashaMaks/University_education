@@ -114,9 +114,7 @@ public class Main {
     private static void Task4() {
         try {
             analyzeSchools analyzer = new analyzeSchools();
-            List<analyzeSchools.Student> students = analyzer.loadDataFromFile("C:\\Users\\HOOR\\IdeaProjects\\Lab5\\src\\ru\\Maksimov\\files\\students.txt");
-
-            List<Integer> resultSchools = analyzer.analyze(students);
+            List<Integer> resultSchools = analyzer.analyze(analyzer.loadDataFromFile("C:\\Users\\HOOR\\IdeaProjects\\Lab5\\src\\ru\\Maksimov\\files\\students.txt"));
 
             System.out.println("Результат:");
             if (resultSchools.isEmpty()) {
@@ -158,6 +156,7 @@ public class Main {
 
     private static void Task6() {
         Queue<String> L1 = new LinkedList<>();
+        Queue<String> L2 = new LinkedList<>();
 
         System.out.println("Введите количество элементов: ");
         int count = scanner.nextInt();
@@ -172,7 +171,7 @@ public class Main {
         System.out.println("Исходная очередь L1:");
         Checks.printQueue(L1);
 
-        Queue<String> L2 = QueueReverser.reverseQueue(L1);
+        QueueReverser.reverseQueue(L1,L2);
         System.out.println("Очередь L2 (перевернутая L1):");
         Checks.printQueue(L2);
     }

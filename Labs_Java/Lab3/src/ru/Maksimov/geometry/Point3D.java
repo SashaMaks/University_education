@@ -47,31 +47,12 @@ public class Point3D {
         this.y = y;
         this.z = z;
     }
-
-
     // Вычисление расстояния до другой точки
     public double distanceTo(Point3D other) {
         double dx = this.x - other.x;
         double dy = this.y - other.y;
         double dz = this.z - other.z;
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
-    }
-
-    // Сравнение точек
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Point3D point = (Point3D) o;
-        return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0 && Double.compare(point.z, z) == 0;
-    }
-
-    // Клонирование точки
-    public Point3D clone() {
-        try {
-            return (Point3D) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
     }
 
     // Преобразование в сроку

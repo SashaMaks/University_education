@@ -5,33 +5,46 @@ import java.util.Objects;
 public class Fraction{
     private int numerator;
     private int denominator;
+    private Double cachedDoubleValue;
 
     // Конструкторы
-    public Fraction() { this.numerator = 0; this.denominator = 1; }
+    public Fraction() { this.numerator = 0; this.denominator = 1; this.cachedDoubleValue = null; }
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
+        this.cachedDoubleValue = null;
         simplification();
     }
 
     // Геттеры
     public int getNumerator() { return numerator; }
     public int getDenominator() { return denominator; }
-    public double getDouble() { return numerator / denominator; }
+    public double getDouble() {
+        if (cachedDoubleValue == null) {
+            cachedDoubleValue = (double) numerator / denominator;
+        }
+        return cachedDoubleValue;
+    }
 
     // Сеттер
     public void setFraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
+        this.cachedDoubleValue = null;
         simplification();
     }
     public void setNumerator(int numerator) {
         this.numerator = numerator;
     }
-    public void setDenominator(int denominator) {this.denominator = denominator;}
+    public void setDenominator(int denominator) {
+        this.denominator = denominator;
+        this.cachedDoubleValue = null;
+        simplification();
+    }
     public void setFraction(Fraction fraction) {
         this.numerator = fraction.getNumerator();
         this.denominator = fraction.getDenominator();
+        this.cachedDoubleValue = null;
         simplification();
     }
 
@@ -64,12 +77,9 @@ public class Fraction{
         int shorten = a;
         numerator /= shorten;
         denominator /= shorten;
-
+        this.cachedDoubleValue = null;
     }
 
     // Преобразование в сроку
     public String toString() { return numerator + "/" + denominator; }
-
-    // Кэширование вещественного числа
-    public int hashDouble() { return Objects.hash(this.getDouble()); }
 }

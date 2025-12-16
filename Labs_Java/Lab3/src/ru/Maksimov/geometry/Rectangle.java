@@ -53,6 +53,6 @@ public class Rectangle extends Shape {
 
     // Преобразование в строку
     public String toString() {
-        return "Прямоугольник в точке " + topLeft.toString() + ", со сторонами " + sideA + " " + sideB + ", площадь=" + calculateArea();
+        return "Прямоугольник в точке " + topLeft.toString() + ", со сторонами " + sideA + " " + sideB + ", площадь " + calculateArea();
     }
 }

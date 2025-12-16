@@ -64,6 +64,6 @@ public class Triangle extends Shape {
 
     // Преобразование в строку
     public String toString() {
-        return "Треугольник с точками A=" + pointA + ", B=" + pointB + ", C=" + pointC + ", площадь=" + calculateArea();
+        return "Треугольник с точками A=" + pointA + ", B=" + pointB + ", C=" + pointC + ", площадь " + calculateArea();
     }
 }

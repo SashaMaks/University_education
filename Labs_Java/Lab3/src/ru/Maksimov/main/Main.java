@@ -212,8 +212,6 @@ public class Main {
         Point pointTriangle3 = new Point(pointTriangle3X,pointTriangle3Y);
         Triangle triangle = new Triangle(pointTriangle1,pointTriangle2,pointTriangle3);
         System.out.println(triangle.toString());
-
-
     }
 
     // ----------------------------=5.3=------------------------------------------
@@ -345,23 +343,21 @@ public class Main {
             System.out.println("Ошибка ввода");
         }
 
-        //cd C:\Users\aleks\IdeaProjects\Lab3\src>
-        //javac ru\Maksimov\main\Main.java
-        //java ru.Maksimov.main.Main 5 3
+//        cd C:\Users\HONOR\IdeaProjects\Lab3\src
+//        javac ru\Maksimov\main\Main.java
+//        java ru.Maksimov.main.Main 5 3
     }
 
     // ----------------------------=8=------------------------------------------
 
     private static void Task8(String[] args) {
-//        System.out.println("Введите X: ");
-//        double point1X = Checks.readNumber();
-//        System.out.println("Введите Y: ");
-//        double point1Y = Checks.readNumber();
-//
-//        Point p1 = new Point(point1X,point1Y);
-//        Point p2 = p1.clone();
-//        System.out.println(p2.toString());
+        System.out.println("Введите X: ");
+        double point1X = Checks.readNumber();
+        System.out.println("Введите Y: ");
+        double point1Y = Checks.readNumber();
 
-        PointShow.main(args);
+        Point p1 = new Point(point1X,point1Y);
+        Point p2 = p1.clone();
+        System.out.println(p2.toString());
     }
 }

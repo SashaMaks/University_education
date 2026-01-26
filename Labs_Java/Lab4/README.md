@@ -27,6 +27,10 @@
   1. `public int compare(Number other)` - выводит 1, если объект который вызвал, больше чем подаваемый, -1 если наоборот и 0 если равны
 #### преобразование в строку
   1. `public String toString()` - выводит объект в виде “Число: {number}”
+<img width="208" height="220" alt="image" src="https://github.com/user-attachments/assets/a6347e2f-47a1-4219-a7cb-d17048a318d8" />
+<img width="232" height="220" alt="image" src="https://github.com/user-attachments/assets/9ea67b66-1bdb-4744-b985-be950310a17e" />
+<img width="239" height="219" alt="image" src="https://github.com/user-attachments/assets/ce78b4a9-09db-48d2-8da0-70f1fd06ee94" />
+
 
 ## Задание 1.4
 
@@ -61,6 +65,8 @@
 Напишем метод ```compare```
 #### метод для сравнения
   1. `public int compare(Student student)` - возвращает 1, если оценка вызываемого студента больше подаваемого, иначе -1, а если они равны, то выводит 0
+<img width="318" height="679" alt="image" src="https://github.com/user-attachments/assets/ae5ea397-9827-4398-a697-5c267c518036" />
+<img width="330" height="506" alt="image" src="https://github.com/user-attachments/assets/a6f22596-642d-4cd8-8f0b-2e20812801a5" />
 
 
 ## Задание 2
@@ -86,6 +92,8 @@
   2. `public static <T> void inputPointInBox(Box<T> box)` - добавление 3Д точки в коробку и дальнейшее вытаскивание ее из коробки, а затем добавление в коробку объекта ```Student```
 #### преобразование в строку
   1. `public String toString()` - выводит объект в виде “Коробка[содержимое]”
+<img width="436" height="310" alt="image" src="https://github.com/user-attachments/assets/5427bb27-31fe-4955-ac5f-6e4056aeb8b6" />
+
 
 ## Задание 3.1
 
@@ -98,6 +106,8 @@
 Создаем интерфейс ```Function<T, R>``` в котором прописываем, что есть метод ```R apply(T t);``` который преобразует объекты типа ```T``` в объекты типа ```R```
 
 Дальше напишем класс ```public class Function4``` с методом ```public static <T, R> List<R> function(List<T> list, Function<T, R> function)```, который принимает список объектов ```List<T> list``` и лямбда выражение ```Function<T, R> function```, далее используя эти данные проходимся по списку обрабатывая каждый его эллемент, а обработанные значения складываем в список ```result```, который уже и возвращаем из метода
+<img width="417" height="636" alt="image" src="https://github.com/user-attachments/assets/5722ca3f-0321-4b25-bd48-43dba51e09c0" />
+
 
 ## Задание 3.2
 
@@ -110,6 +120,8 @@
 Создаем интерфейс Фильтр ```Filter <T>``` в котором прописано что есть метод ```boolean test(T obj);```, который проверяет объекты типа ```T``` и возвращает `true` или `false` в зависимости от того, проходит ли объект проверку.
 
 Дальше напишем класс ```public class Filter4``` с методом ```public static <T> List<T> filter(List<T> list, Filter<T> filter)```, который принимает список объектов ```List<T> list``` и лямбда выражение ```Filter<T> filter```, далее используя эти данные проходимся по списку проверяя каждый элемент, а элементы которые прошли проверку складываем в новый список, который уже и возвращаем из метода.
+<img width="479" height="684" alt="image" src="https://github.com/user-attachments/assets/a4d51a2d-0b73-4ee3-8ec1-6489abd2d4ab" />
+
 
 ## Задание 3.3
 
@@ -123,6 +135,8 @@
 Дальше напишем класс ```public class Reduction4``` с методом ```public static <T> T reduce(List<T> list, T initialValue, Reduction<T> reducer)```, который принимает список объектов ```List<T> list```, начальное значение ```T initialValue``` и лямбда выражение ```Reduction<T> reducer```, и далее используя эти данные проходим по списку накапливая результат, применяя лямбда к каждому элементу вместе с текущим накопленным значением, а в конце возвращаем финальный накопленный результат.
 
 Также дополним метод ```public static <T> T reduce(List<T> list, T initialValue, Reduction<T> reducer)```, чтобы он гарантированно не возвращал ```null``` и не падал с ошибкой если список пуст. Для этого проверяем в начале метода: если список пустой или ```null```, то сразу возвращаем начальное значение без всякой обработки.
+<img width="449" height="681" alt="image" src="https://github.com/user-attachments/assets/133c7332-bb12-4e56-834e-6d5d862cef06" />
+
 
 ## Задание 3.4
 
@@ -137,3 +151,4 @@
 Создаем интерфейс ```Collecting <T,P>``` коллекционирование в котором прописан метод ```collect(P collection, T element)``` который добавляет элемент в коллекцию определенным способом.
 
 Дальше напишем класс ```public class Collecting4``` с методом ```public static <T, P> P collect(List<T> list, P collection, Collecting<T, P> collector)```, который принимает список исходных значений ```List<T> list```, пустую коллекцию для результатов ```P collection``` и лямбда выражение ```Collecting<T, P> collector```, и далее используя эти данные проходитмся по списку и с помощью лямбды добавляем каждый элемент в результирующую коллекцию тем способом, который указан в лямбде, а в конце возвращаем заполненную коллекцию.
+<img width="350" height="421" alt="image" src="https://github.com/user-attachments/assets/faaa4c33-a858-43c3-955e-cf6b74f7fb7e" />

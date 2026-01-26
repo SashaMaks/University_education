@@ -35,11 +35,11 @@ public class Main {
                 case "3.2":
                     Task32();
                     break;
-                case "3.3":
-                    Task33();
-                    break;
                 case "3.4":
                     Task34();
+                    break;
+                case "3.3":
+                    Task33();
                     break;
                 case "0":
                     go = false;

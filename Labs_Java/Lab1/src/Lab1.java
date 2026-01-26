@@ -93,9 +93,9 @@ public class Lab1 {
     public static String listNums(int x) {
         String s = "0";
         if (x > 0) {
-            for (int i = 1; i <= x; i++) s = s + " " + Integer.toString(i);
+            for (int i = 1; i <= x; i++) s = s + " " + i;
         } else if (x < 0) {
-            for (int i = -1; i >= x; i--) s = s + " " + Integer.toString(i);
+            for (int i = -1; i >= x; i--) s = s + " " + i;
         }
         return s;
     }

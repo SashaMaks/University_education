@@ -48,13 +48,21 @@ public class Checks {
     }
 
     // Чтение инт в рамках
-    public static int readIntInRange(int min, int max) {
+    public static int readIntInRange(int a, int b) {
+        int min, max;
+        if (a < b) {
+            min = a;
+            max = b;
+        } else {
+            min = b;
+            max = a;
+        }
         while (true) {
             int value = Checks.readInt();
             if (value >= min && value <= max) {
                 return value;
             }
-            System.out.printf("Ошибка! Введите число от %d до %d: ", min, max);
+            System.out.printf("Ошибка! Введите число от ", min, " до ", max);
         }
     }
 

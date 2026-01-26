@@ -20,7 +20,6 @@ public class Point3D {
         this.z = point.z;
     }
 
-
     // Геттеры
     public double getX() {
         return x;
@@ -46,13 +45,6 @@ public class Point3D {
         this.x = x;
         this.y = y;
         this.z = z;
-    }
-    // Вычисление расстояния до другой точки
-    public double distanceTo(Point3D other) {
-        double dx = this.x - other.x;
-        double dy = this.y - other.y;
-        double dz = this.z - other.z;
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
     // Преобразование в сроку

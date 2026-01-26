@@ -262,7 +262,6 @@ public class Main {
         Square square2 = new Square(pointSquare2,sideSquare2);
         System.out.println(square2.toString());
 
-
         System.out.println("\nПлощади: \n");
         double totalArea = 0;
         Shape[] shapes = {circle1,circle2,square1,square2};
@@ -325,7 +324,6 @@ public class Main {
 
         System.out.println("Отличник ли Вася: " + Vasia.isExcellent());
         System.out.println("Отличник ли Петя: " + Petia.isExcellent());
-
     }
 
     // ----------------------------=7.3=------------------------------------------
@@ -351,13 +349,13 @@ public class Main {
     // ----------------------------=8=------------------------------------------
 
     private static void Task8(String[] args) {
-        System.out.println("Введите X: ");
-        double point1X = Checks.readNumber();
-        System.out.println("Введите Y: ");
-        double point1Y = Checks.readNumber();
-
-        Point p1 = new Point(point1X,point1Y);
-        Point p2 = p1.clone();
-        System.out.println(p2.toString());
+//        System.out.println("Введите X: ");
+//        double point1X = Checks.readNumber();
+//        System.out.println("Введите Y: ");
+//        double point1Y = Checks.readNumber();
+//
+//        Point p1 = new Point(point1X,point1Y);
+//        Point p2 = p1.clone();
+//        System.out.println(p2.toString());
     }
 }

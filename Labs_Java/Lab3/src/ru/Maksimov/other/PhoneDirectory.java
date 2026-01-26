@@ -19,12 +19,24 @@ public class PhoneDirectory {
     }
 
     // Геттеры
-    public String getName(String name) {
-        return name;
-    }
     public String getPhone(String name) {
         return contacts.get(name);
     }
+    public String[] getNamesStarting(String start) { // Массив всех имен, которые начинаются на данный в метод префикс
+        if (start == null) return new String[0];
+
+        List<String> matchingNames = new ArrayList<>();
+        for (String name : contacts.keySet()) {
+            if (name.startsWith(start)) {
+                matchingNames.add(name);
+            }
+        }
+        return matchingNames.toArray(new String[0]);
+    }
+    public int getContactsCount() {
+        return contacts.size();
+    }
+
 
     // Добавление новой пары “телефон – имя” || или замена номера у имени
     public String addContact(String name, String phone) {
@@ -52,11 +64,6 @@ public class PhoneDirectory {
         return contacts.containsValue(phone);
     }
 
-    // Количество контактов
-    public int contactsCount() {
-        return contacts.size();
-    }
-
     // Удалить пару “телефон – имя” по имени
     public void deletePair(String name) {
         contacts.remove(name);
@@ -78,19 +85,6 @@ public class PhoneDirectory {
             i++;
         }
         return pairs;
-    }
-
-    // Массив всех имен, которые начинаются на данный в метод префикс
-    public String[] getNamesStarting(String start) {
-        if (start == null) return new String[0];
-
-        List<String> matchingNames = new ArrayList<>();
-        for (String name : contacts.keySet()) {
-            if (name.startsWith(start)) {
-                matchingNames.add(name);
-            }
-        }
-        return matchingNames.toArray(new String[0]);
     }
 
     // Преобразование в строку

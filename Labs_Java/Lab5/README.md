@@ -103,57 +103,47 @@
 #### Решение:
 Напишем класс `analyzeSchools`, который анализирует данные об учениках и школах из файла
 
-#### вспомогательный класс
+#### вспомогательные классы
 1. Класс Student (Ученик)
 ##### Поля:
   1. `private final String lastName`  - фамилия ученика
-  2. private final String firstName - имя ученика
-  3. private final int school - номер школы
-  4. private final int score - балл ученика
-
+  2. `private final String firstName` - имя ученика
+  3. `private final int school` - номер школы
+  4. `private final int score` - балл ученика
 ##### Конструкторы:
-
-public Student(String lastName, String firstName, int school, int score) - создает объект ученика
-
-Геттеры:
-
-public String getLastName() - возвращает фамилию
-
-public String getFirstName() - возвращает имя
-
-public int getSchool() - возвращает номер школы
-
-public int getScore() - возвращает балл
-
-Преобразование в строку:
-
-public String toString() - выводит данные в формате "Фамилия Имя Школа Балл"
+  1. `public Student(String lastName, String firstName, int school, int score)` - создает ученика через фамилию имя школу и балл
+##### Геттеры:
+  1. `public String getLastName()` - возвращает фамилию
+  2. `public String getFirstName()` - возвращает имя
+  3. `public int getSchool()` - возвращает номер школы
+  4. `public int getScore()` - возвращает балл
+##### Преобразование в строку:
+  1. `public String toString()` - выводит данные в формате "Фамилия Имя Школа Балл"
 
 2. Класс SchoolStats (Статистика школы)
-Поля:
+##### Поля:
+  1. `private int totalScore` - сумма баллов всех учеников школы
+  2. `private int studentCount` - количество учеников в школе
+##### Методы:
+  1. `public void addScore(int score)` - добавляет балл ученика к статистике
+  2. `public int getTotalScore()` - возвращает сумму баллов
+  3. `public int getStudentCount()` - возвращает количество учеников
+  4. `public double getAverage()` - вычисляет средний балл
+  5. `public String toString()` - выводит статистику школы
+#### методы для обработки текста
+  1. `public List<Student> loadDataFromFile(String fileName) throws IOException` - читаем и проверяем на верность данные полученные из файла
+  2. `private Student parseStudent(String line, int lineNumber)` - метод который делит строку из файла на данные
+  3. `public List<Integer> analyze(List<Student> students)` - метод для вычисления среднего балла по району, группирования учеников по школам, поиском школ со средним баллом выше среднего и возвратом отсортированного списка таких школ
+  4. ` private double calculateDistrictAverage(List<Student> students)` - вычисление среднего балла по району 
+  5. `private Map<Integer, Double> calculateSchoolAverages(List<Student> students)` - вычисление среднего балла школы
 
-private int totalScore - сумма баллов всех учеников школы
-
-private int studentCount - количество учеников в школе
-
-Методы:
-
-public void addScore(int score) - добавляет балл ученика к статистике
-
-public int getTotalScore() - возвращает сумму баллов
-
-public int getStudentCount() - возвращает количество учеников
-
-public double getAverage() - вычисляет средний балл
-
-public String toString() - выводит статистику школы
 Сначала мы открываем файл и читаем данные из него, проверяя их на правильность заполнения
 
 если все верно, то делим строку из файла на эллементы
 фамилия имя школа балл
-если все верно, то создается судент (дополнительный класс созданный в классе, описывающий имя фамилию, школу где учится и балл) и добавляется в список студентов который возвращается
+если все верно, то создается студент (дополнительный класс созданный в классе, описывающий имя фамилию, школу где учится и балл) и добавляется в список студентов который возвращается
 
-Далее переходим в метод анализа, где сна чала вычисляем средний балл по району, далее ччерез map делим студентов на школы где они учатся и ищем далее школы со средним баллом выше среднего
+Далее переходим в метод анализа, где сначала вычисляем средний балл по району, далее через `map` делим студентов на школы где они учатся и ищем далее школы со средним баллом выше среднего
 
 
 ## Задание 5
@@ -162,6 +152,8 @@ public String toString() - выводит статистику школы
 слове?
 
 #### Решение:
+Напишем класс `public class TextAnalyzer` для анализа текста
+
 Сначала мы открываем файл и читаем данные из него, нормализуя их в один вид
 
 делим слова по знакам препинания, пробелам и цифрам на массив слов

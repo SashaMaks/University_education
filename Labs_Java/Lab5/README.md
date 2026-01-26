@@ -101,7 +101,52 @@
 где <Фамилия> – строка, состоящая не более, чем из 20 символов без пробелов, <Имя>– строка, состоящая не более, чем из 20 символов без пробелов, <Школа> – целое число от 1 до 99, <Балл> – целое число от 1 до 100.
 
 #### Решение:
-Напишем класс `analyzeSchools` для 
+Напишем класс `analyzeSchools`, который анализирует данные об учениках и школах из файла
+
+#### вспомогательный класс
+1. Класс Student (Ученик)
+##### Поля:
+  1. `private final String lastName`  - фамилия ученика
+  2. private final String firstName - имя ученика
+  3. private final int school - номер школы
+  4. private final int score - балл ученика
+
+##### Конструкторы:
+
+public Student(String lastName, String firstName, int school, int score) - создает объект ученика
+
+Геттеры:
+
+public String getLastName() - возвращает фамилию
+
+public String getFirstName() - возвращает имя
+
+public int getSchool() - возвращает номер школы
+
+public int getScore() - возвращает балл
+
+Преобразование в строку:
+
+public String toString() - выводит данные в формате "Фамилия Имя Школа Балл"
+
+2. Класс SchoolStats (Статистика школы)
+Поля:
+
+private int totalScore - сумма баллов всех учеников школы
+
+private int studentCount - количество учеников в школе
+
+Методы:
+
+public void addScore(int score) - добавляет балл ученика к статистике
+
+public int getTotalScore() - возвращает сумму баллов
+
+public int getStudentCount() - возвращает количество учеников
+
+public double getAverage() - вычисляет средний балл
+
+public String toString() - выводит статистику школы
 Сначала мы открываем файл и читаем данные из него, проверяя их на правильность заполнения
 
 если все верно, то делим строку из файла на эллементы

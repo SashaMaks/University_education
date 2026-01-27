@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Manufacturers</h1>
+
+<a href="/manufacturers/new">Add</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="m : ${manufacturers}">
+        <td th:text="${m.manufacturerId}"></td>
+        <td th:text="${m.name}"></td>
+        <td>
+            <a th:href="@{|/manufacturers/${m.manufacturerId}/edit|}">Edit</a>
+            <form th:action="@{|/manufacturers/${m.manufacturerId}/delete|}" method="post" style="display:inline">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<br><br>
+<a href="/" style="text-decoration:none; padding:6px 12px; background:#ddd; border-radius:4px;">
+    На главную
+</a>
+<br><br>
+
+
+</body>
+</html>

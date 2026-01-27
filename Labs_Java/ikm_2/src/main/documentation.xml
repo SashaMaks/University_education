@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documentation>
+
+    <!-- ========================= CAR CONTROLLER ========================= -->
+
+    <controller name="CarController" path="/cars">
+
+        <summary>
+            Контроллер для управления автомобилями.
+            Реализует операции просмотра списка, создания, редактирования,
+            обновления и удаления автомобилей.
+            Также выполняет проверку уникальности VIN-кода.
+        </summary>
+
+        <dependencies>
+            <dependency>CarRepository</dependency>
+            <dependency>ModelRepository</dependency>
+        </dependencies>
+
+        <method name="list" type="GET" path="/cars">
+            <summary>Отображает список всех автомобилей.</summary>
+            <param name="model">UI‑модель для передачи данных.</param>
+            <return>Шаблон cars/list</return>
+        </method>
+
+        <method name="newForm" type="GET" path="/cars/new">
+            <summary>Открывает форму создания нового автомобиля.</summary>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон cars/form</return>
+        </method>
+
+        <method name="create" type="POST" path="/cars/create">
+            <summary>Создаёт новый автомобиль без проверки VIN.</summary>
+            <param name="car">Сущность автомобиля.</param>
+            <return>Редирект на список автомобилей.</return>
+        </method>
+
+        <method name="editForm" type="GET" path="/cars/{id}/edit">
+            <summary>Открывает форму редактирования автомобиля.</summary>
+            <param name="id">Идентификатор автомобиля.</param>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон cars/form</return>
+        </method>
+
+        <method name="update" type="POST" path="/cars/{id}">
+            <summary>Обновляет данные автомобиля.</summary>
+            <param name="id">Идентификатор автомобиля.</param>
+            <param name="car">Обновлённая сущность автомобиля.</param>
+            <return>Редирект на список автомобилей.</return>
+        </method>
+
+        <method name="delete" type="POST" path="/cars/{id}/delete">
+            <summary>Удаляет автомобиль по идентификатору.</summary>
+            <param name="id">Идентификатор автомобиля.</param>
+            <return>Редирект на список автомобилей.</return>
+        </method>
+
+        <method name="save" type="POST" path="/cars">
+            <summary>
+                Сохраняет автомобиль с проверкой уникальности VIN.
+                Если VIN уже существует — возвращает форму с ошибкой.
+            </summary>
+            <param name="car">Сущность автомобиля.</param>
+            <param name="modelAttr">UI‑модель для ошибок.</param>
+            <return>Редирект или форма с ошибкой.</return>
+        </method>
+
+    </controller>
+
+    <!-- ====================== MANUFACTURER CONTROLLER ====================== -->
+
+    <controller name="ManufacturerController" path="/manufacturers">
+
+        <summary>
+            Контроллер для управления производителями.
+            Реализует операции просмотра списка, создания, редактирования,
+            обновления и удаления производителей.
+            Также выполняет проверку уникальности имени производителя.
+        </summary>
+
+        <dependencies>
+            <dependency>ManufacturerRepository</dependency>
+        </dependencies>
+
+        <method name="list" type="GET" path="/manufacturers">
+            <summary>Отображает список всех производителей.</summary>
+            <param name="model">UI‑модель для передачи данных.</param>
+            <return>Шаблон manufacturers/list</return>
+        </method>
+
+        <method name="newForm" type="GET" path="/manufacturers/new">
+            <summary>Открывает форму создания нового производителя.</summary>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон manufacturers/form</return>
+        </method>
+
+        <method name="create" type="POST" path="/manufacturers/create">
+            <summary>Создаёт нового производителя без проверки уникальности.</summary>
+            <param name="manufacturer">Сущность производителя.</param>
+            <return>Редирект на список производителей.</return>
+        </method>
+
+        <method name="editForm" type="GET" path="/manufacturers/{id}/edit">
+            <summary>Открывает форму редактирования производителя.</summary>
+            <param name="id">Идентификатор производителя.</param>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон manufacturers/form</return>
+        </method>
+
+        <method name="update" type="POST" path="/manufacturers/{id}">
+            <summary>Обновляет данные производителя.</summary>
+            <param name="id">Идентификатор производителя.</param>
+            <param name="manufacturer">Обновлённая сущность производителя.</param>
+            <return>Редирект на список производителей.</return>
+        </method>
+
+        <method name="delete" type="POST" path="/manufacturers/{id}/delete">
+            <summary>Удаляет производителя по идентификатору.</summary>
+            <param name="id">Идентификатор производителя.</param>
+            <return>Редирект на список производителей.</return>
+        </method>
+
+        <method name="details" type="GET" path="/manufacturers/{id}">
+            <summary>
+                Отображает подробную информацию о производителе.
+                Также выводит список моделей, связанных с ним (OneToMany).
+            </summary>
+            <param name="id">Идентификатор производителя.</param>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон manufacturers/details</return>
+        </method>
+
+        <method name="save" type="POST" path="/manufacturers">
+            <summary>
+                Сохраняет производителя с проверкой уникальности имени.
+                Если имя уже существует — возвращает форму с ошибкой.
+            </summary>
+            <param name="man">Сущность производителя.</param>
+            <param name="modelAttr">UI‑модель для ошибок.</param>
+            <return>Редирект или форма с ошибкой.</return>
+        </method>
+
+    </controller>
+
+    <!-- ========================= MODEL CONTROLLER ========================= -->
+
+    <controller name="ModelController" path="/models">
+
+        <summary>
+            Контроллер для управления моделями автомобилей.
+            Реализует операции просмотра списка, создания, редактирования,
+            обновления и удаления моделей.
+            Также выполняет проверку уникальности названия модели у производителя.
+        </summary>
+
+        <dependencies>
+            <dependency>ModelRepository</dependency>
+            <dependency>ManufacturerRepository</dependency>
+        </dependencies>
+
+        <method name="list" type="GET" path="/models">
+            <summary>Отображает список всех моделей автомобилей.</summary>
+            <param name="model">UI‑модель для передачи данных.</param>
+            <return>Шаблон models/list</return>
+        </method>
+
+        <method name="newForm" type="GET" path="/models/new">
+            <summary>Открывает форму создания новой модели автомобиля.</summary>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон models/form</return>
+        </method>
+
+        <method name="create" type="POST" path="/models/create">
+            <summary>Создаёт новую модель автомобиля без проверки уникальности.</summary>
+            <param name="m">Сущность модели автомобиля.</param>
+            <return>Редирект на список моделей.</return>
+        </method>
+
+        <method name="editForm" type="GET" path="/models/{id}/edit">
+            <summary>Открывает форму редактирования модели автомобиля.</summary>
+            <param name="id">Идентификатор модели.</param>
+            <param name="model">UI‑модель.</param>
+            <return>Шаблон models/form</return>
+        </method>
+
+        <method name="update" type="POST" path="/models/{id}">
+            <summary>Обновляет данные модели автомобиля.</summary>
+            <param name="id">Идентификатор модели.</param>
+            <param name="m">Обновлённая сущность модели.</param>
+            <return>Редирект на список моделей.</return>
+        </method>
+
+        <method name="delete" type="POST" path="/models/{id}/delete">
+            <summary>Удаляет модель автомобиля по идентификатору.</summary>
+            <param name="id">Идентификатор модели.</param>
+            <return>Редирект на список моделей.</return>
+        </method>
+
+        <method name="save" type="POST" path="/models">
+            <summary>
+                Сохраняет модель автомобиля с проверкой уникальности названия
+                в рамках выбранного производителя.
+                При наличии дубликата возвращает форму с ошибкой.
+            </summary>
+            <param name="modelEntity">Сущность модели автомобиля.</param>
+            <param name="uiModel">UI‑модель для ошибок.</param>
+            <return>Редирект или форма с ошибкой.</return>
+        </method>
+
+    </controller>
+
+    <!-- =========================== HOME CONTROLLER =========================== -->
+
+    <controller name="HomeController" path="/">
+
+        <summary>
+            Главный контроллер приложения.
+            Отвечает за отображение домашней страницы.
+        </summary>
+
+        <dependencies>
+            <!-- Нет зависимостей -->
+        </dependencies>
+
+        <method name="home" type="GET" path="/">
+            <summary>Отображает главную страницу приложения.</summary>
+            <return>Шаблон home</return>
+        </method>
+
+    </controller>
+
+    <!-- ================================================================================================= -->
+    <!-- ==========================================   MODEL CLASSES   ==================================== -->
+    <!-- ================================================================================================= -->
+
+    <!-- ========================================= CAR ENTITY ========================================= -->
+
+    <entity name="Car" table="cars">
+
+        <summary>
+            Сущность автомобиля. Хранит информацию о VIN‑коде и связи с моделью автомобиля.
+            Используется в CRUD‑операциях и отображении данных в системе.
+        </summary>
+
+        <fields>
+
+            <field name="carId" type="Long">
+                <summary>Первичный ключ автомобиля. Генерируется автоматически.</summary>
+                <annotation>@Id</annotation>
+                <annotation>@GeneratedValue(strategy = GenerationType.IDENTITY)</annotation>
+            </field>
+
+            <field name="vinCode" type="String">
+                <summary>Уникальный VIN‑код автомобиля.</summary>
+            </field>
+
+            <field name="model" type="Model">
+                <summary>
+                    Связь ManyToOne с сущностью Model.
+                    Определяет, к какой модели относится данный автомобиль.
+                </summary>
+                <annotation>@ManyToOne</annotation>
+                <annotation>@JoinColumn(name = "model_id")</annotation>
+            </field>
+
+        </fields>
+
+        <methods>
+
+            <method name="getCarId">
+                <summary>Возвращает идентификатор автомобиля.</summary>
+                <return>Long</return>
+            </method>
+
+            <method name="setCarId">
+                <summary>Устанавливает идентификатор автомобиля.</summary>
+                <param name="carId">Идентификатор автомобиля.</param>
+            </method>
+
+            <method name="getVinCode">
+                <summary>Возвращает VIN‑код автомобиля.</summary>
+                <return>String</return>
+            </method>
+
+            <method name="setVinCode">
+                <summary>Устанавливает VIN‑код автомобиля.</summary>
+                <param name="vinCode">VIN‑код автомобиля.</param>
+            </method>
+
+            <method name="getModel">
+                <summary>Возвращает модель автомобиля.</summary>
+                <return>Model</return>
+            </method>
+
+            <method name="setModel">
+                <summary>Устанавливает модель автомобиля.</summary>
+                <param name="model">Сущность модели.</param>
+            </method>
+
+        </methods>
+
+    </entity>
+
+    <!-- ====================================== MANUFACTURER ENTITY ====================================== -->
+
+    <entity name="Manufacturer" table="manufacturers">
+
+        <summary>
+            Сущность производителя автомобилей.
+            Содержит информацию о названии производителя и список моделей,
+            связанных с ним по связи OneToMany.
+        </summary>
+
+        <fields>
+
+            <field name="manufacturerId" type="Long">
+                <summary>Первичный ключ производителя. Генерируется автоматически.</summary>
+                <annotation>@Id</annotation>
+                <annotation>@GeneratedValue(strategy = GenerationType.IDENTITY)</annotation>
+            </field>
+
+            <field name="name" type="String">
+                <summary>Название производителя. Должно быть уникальным.</summary>
+            </field>
+
+            <field name="models" type="List&lt;Model&gt;">
+                <summary>
+                    Список моделей, связанных с производителем.
+                    Связь OneToMany, каскадное удаление моделей при удалении производителя.
+                </summary>
+                <annotation>@OneToMany(mappedBy = "manufacturer", cascade = CascadeType.REMOVE)</annotation>
+            </field>
+
+        </fields>
+
+        <methods>
+
+            <method name="getManufacturerId">
+                <summary>Возвращает идентификатор производителя.</summary>
+                <return>Long</return>
+            </method>
+
+            <method name="setManufacturerId">
+                <summary>Устанавливает идентификатор производителя.</summary>
+                <param name="manufacturerId">Идентификатор производителя.</param>
+            </method>
+
+            <method name="getName">
+                <summary>Возвращает название производителя.</summary>
+                <return>String</return>
+            </method>
+
+            <method name="setName">
+                <summary>Устанавливает название производителя.</summary>
+                <param name="name">Название производителя.</param>
+            </method>
+
+            <method name="getModels">
+                <summary>Возвращает список моделей, связанных с производителем.</summary>
+                <return>List&lt;Model&gt;</return>
+            </method>
+
+        </methods>
+
+    </entity>
+
+    <!-- =========================================== MODEL ENTITY =========================================== -->
+
+    <entity name="Model" table="models">
+
+        <summary>
+            Сущность модели автомобиля.
+            Содержит название модели, ссылку на производителя и список автомобилей,
+            относящихся к данной модели.
+        </summary>
+
+        <fields>
+
+            <field name="modelId" type="Long">
+                <summary>Первичный ключ модели. Генерируется автоматически.</summary>
+                <annotation>@Id</annotation>
+                <annotation>@GeneratedValue(strategy = GenerationType.IDENTITY)</annotation>
+            </field>
+
+            <field name="modelName" type="String">
+                <summary>Название модели автомобиля.</summary>
+            </field>
+
+            <field name="manufacturer" type="Manufacturer">
+                <summary>
+                    Связь ManyToOne с сущностью Manufacturer.
+                    Определяет, какому производителю принадлежит модель.
+                </summary>
+                <annotation>@ManyToOne</annotation>
+                <annotation>@JoinColumn(name = "manufacturer_id")</annotation>
+            </field>
+
+            <field name="cars" type="List&lt;Car&gt;">
+                <summary>
+                    Список автомобилей, относящихся к данной модели.
+                    Связь OneToMany, каскадное удаление автомобилей при удалении модели.
+                </summary>
+                <annotation>@OneToMany(mappedBy = "model", cascade = CascadeType.REMOVE)</annotation>
+            </field>
+
+        </fields>
+
+        <methods>
+
+            <method name="getModelId">
+                <summary>Возвращает идентификатор модели.</summary>
+                <return>Long</return>
+            </method>
+
+            <method name="setModelId">
+                <summary>Устанавливает идентификатор модели.</summary>
+                <param name="modelId">Идентификатор модели.</param>
+            </method>
+
+            <method name="getModelName">
+                <summary>Возвращает название модели.</summary>
+                <return>String</return>
+            </method>
+
+            <method name="setModelName">
+                <summary>Устанавливает название модели.</summary>
+                <param name="modelName">Название модели.</param>
+            </method>
+
+            <method name="getManufacturer">
+                <summary>Возвращает производителя модели.</summary>
+                <return>Manufacturer</return>
+            </method>
+
+            <method name="setManufacturer">
+                <summary>Устанавливает производителя модели.</summary>
+                <param name="manufacturer">Сущность производителя.</param>
+            </method>
+
+        </methods>
+
+    </entity>
+
+    <!-- ================================================================================================= -->
+    <!-- ============================================   REPOSITORIES   =================================== -->
+    <!-- ================================================================================================= -->
+
+    <!-- ========================================= CAR REPOSITORY ========================================= -->
+
+    <repository name="CarRepository" entity="Car" extends="JpaRepository<Car, Long>">
+
+        <summary>
+            Репозиторий для работы с сущностью Car.
+            Предоставляет стандартные CRUD‑операции и метод поиска автомобиля по VIN‑коду.
+        </summary>
+
+        <methods>
+
+            <method name="findByVinCode">
+                <summary>
+                    Выполняет поиск автомобиля по его VIN‑коду.
+                    Возвращает Optional, содержащий найденный автомобиль, либо пустой результат.
+                </summary>
+                <param name="vinCode">VIN‑код автомобиля.</param>
+                <return>Optional&lt;Car&gt;</return>
+            </method>
+
+        </methods>
+
+    </repository>
+
+    <!-- ==================================== MANUFACTURER REPOSITORY ==================================== -->
+
+    <repository name="ManufacturerRepository" entity="Manufacturer" extends="JpaRepository<Manufacturer, Long>">
+
+        <summary>
+            Репозиторий для работы с сущностью Manufacturer.
+            Предоставляет стандартные CRUD‑операции и метод поиска производителя по имени.
+        </summary>
+
+        <methods>
+
+            <method name="findByName">
+                <summary>
+                    Выполняет поиск производителя по его названию.
+                    Возвращает Optional, содержащий найденного производителя, либо пустой результат.
+                </summary>
+                <param name="name">Название производителя.</param>
+                <return>Optional&lt;Manufacturer&gt;</return>
+            </method>
+
+        </methods>
+
+    </repository>
+
+    <!-- ========================================== MODEL REPOSITORY ========================================== -->
+
+    <repository name="ModelRepository" entity="Model" extends="JpaRepository<Model, Long>">
+
+        <summary>
+            Репозиторий для работы с сущностью Model.
+            Предоставляет стандартные CRUD‑операции и метод поиска модели
+            по названию и производителю.
+        </summary>
+
+        <methods>
+
+            <method name="findByModelNameAndManufacturer">
+                <summary>
+                    Выполняет поиск модели по её названию и производителю.
+                    Используется для проверки уникальности модели в рамках одного производителя.
+                </summary>
+                <param name="modelName">Название модели.</param>
+                <param name="manufacturer">Производитель модели.</param>
+                <return>Optional&lt;Model&gt;</return>
+            </method>
+
+        </methods>
+
+    </repository>
+
+</documentation>

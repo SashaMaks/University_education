@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Model</h1>
+
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+<form th:action="${model.modelId} == null ? '/models' : '/models/' + model.modelId"
+      method="post"
+      th:object="${model}">
+
+    <label>Model Name:
+        <input type="text" th:field="*{modelName}">
+    </label>
+    <br><br>
+
+    <label>Manufacturer:
+        <select th:field="*{manufacturer.manufacturerId}">
+            <option th:each="man : ${manufacturers}"
+                    th:value="${man.manufacturerId}"
+                    th:text="${man.name}">
+            </option>
+        </select>
+    </label>
+    <br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<br><br>
+<a href="/models" style="text-decoration:none; padding:6px 12px; background:#ddd; border-radius:4px;"> Вернуться </a>
+
+</body>
+</html>

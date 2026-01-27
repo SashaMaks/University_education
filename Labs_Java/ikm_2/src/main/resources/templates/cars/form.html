@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Car</h1>
+
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+<form th:action="${car.carId} == null ? '/cars' : '/cars/' + car.carId"
+      method="post"
+      th:object="${car}">
+
+    <label>VIN Code:
+        <input type="text" th:field="*{vinCode}">
+    </label>
+    <br><br>
+
+    <label>Model:
+        <select th:field="*{model.modelId}">
+            <option th:each="m : ${models}"
+                    th:value="${m.modelId}"
+                    th:text="${m.modelName}">
+
+            </option>
+        </select>
+    </label>
+    <br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<br><br>
+<a href="/cars" style="text-decoration:none; padding:6px 12px; background:#ddd; border-radius:4px;"> Вернуться </a>
+
+</body>
+</html>

@@ -45,6 +45,7 @@
   3. `public void setDenominator(int denominator)` - установить знаменатель, удалить кэш
   4. `public double getDouble()` - получить вещественное значение и кэшироовать его, если кэш пустой, иначе вернуть кэш
 
+<img width="772" height="549" alt="image" src="https://github.com/user-attachments/assets/50c5dac4-c8ca-40b8-a533-444a4c8a7723" />
 
 ## Задание 2
 
@@ -77,6 +78,8 @@
 
 Класс `public class MeowEverybody` с методом `public static void makeAllMeow(Meowing... meowables)` - который 3 раза вызовет метод `meow()` для всех "мяукающих"
 
+<img width="608" height="221" alt="image" src="https://github.com/user-attachments/assets/66fb953a-f017-4e78-905f-a655bde28994" />
+
 
 ## Задание 3
 
@@ -89,6 +92,8 @@
   2. `private static <T> boolean contains(List<T> list, T element)` - проверяет, есть ли элемент в подаваемом списке 
 
 В Main просто достаточно вызвать getDifferenceSimple и приравнять его к выводимому списку
+
+<img width="542" height="401" alt="image" src="https://github.com/user-attachments/assets/3211c4eb-8a97-4a62-b1b4-4ee344973b28" />
 
 
 ## Задание 4
@@ -147,6 +152,8 @@
 
 Далее переходим в метод анализа, где сначала вычисляем средний балл по району, далее через `map` делим студентов на школы где они учатся и ищем далее школы со средним баллом выше среднего
 
+<img width="508" height="217" alt="image" src="https://github.com/user-attachments/assets/173a7009-2c73-4e50-b250-a8d2a934002e" />
+
 
 ## Задание 5
 
@@ -161,6 +168,8 @@
 
 Сначала читаем данные из файла, затем передаем их в метод `public Set<Character> analyzeText(String text)`, затем выводим
 
+<img width="930" height="308" alt="image" src="https://github.com/user-attachments/assets/33e2c70b-fbe9-49fc-bf85-a59462ffb662" />
+
 ## Задание 6
 
 Переписать элементы из очереди L1 в очередь L2 в обратном порядке.
@@ -169,6 +178,9 @@
 Напишем класс `QueueReverser` с единственным методом `public static <T> void reverseQueue(Queue<T> L1,Queue<T> L2)` который рекурсивно вытаскивает первый элемент из L1 до того момента пока очередь не опустеет, потом метод начинает просто добавлять элементы в конец L2 и подниматься из рекурсии
 
 В Main мы создадим очереди и произведем вызов метода `reverseQueue(L1, L2)`
+
+<img width="404" height="439" alt="image" src="https://github.com/user-attachments/assets/6f63a63f-99a3-474b-8a8c-27d91a36ad17" />
+
 
 ## Задание 7.1
 
@@ -185,6 +197,8 @@
 Возвращаем ломаную из массива точек
 
 В Main мы создаем точки, далее вызваем метод `processPointsWithStream` и выводим полученную ломанную
+
+<img width="427" height="374" alt="image" src="https://github.com/user-attachments/assets/1a715201-3fae-401f-a685-d91f8d8c7ec5" />
 
 ## Задание 7.2
 
@@ -221,3 +235,7 @@
   2. `private static Person parseLine(String line)` - метод используемый в методе `processFile`, он преобразует подаваемую строчку в объект `Person`
 
 В Main мы создаем словарь заполненный данными из `processFile` в который передали называние файла
+
+<img width="163" height="268" alt="image" src="https://github.com/user-attachments/assets/105ce737-5a9a-4726-aae7-edabcddccfb3" />
+
+<img width="656" height="50" alt="image" src="https://github.com/user-attachments/assets/86b90056-5a07-49ec-8eb9-1e046af2c099" />

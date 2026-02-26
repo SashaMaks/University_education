@@ -28,10 +28,10 @@ public class Main {
                 case "1.6":
                     Task16();
                     break;
-                case "2.1":
+                case "2.4":
                     Task21();
                     break;
-                case "2.2":
+                case "2.6":
                     Task22();
                     break;
                 case "0":
@@ -78,13 +78,30 @@ public class Main {
     // ----------------------------=1.5=------------------------------------------
 
     private static void Task15() {
-        Processor.processDefault(Class12.class);
+        Processor.AnnotationTwo(Class15.class);
     }
 
     // ----------------------------=1.6=------------------------------------------
 
     private static void Task16() {
-        Processor.processDefault(Class12.class);
+        // Обрабатываем разные классы
+        Processor.AnnotationCache(DataService.class);
+        Processor.AnnotationCache(SessionManager.class);
+        Processor.AnnotationCache(DefaultCacheClass.class);
+        Processor.AnnotationCache(NoCacheClass.class);
+
+        // Пример с массивом аннотированных классов
+        System.out.println("=== Пакетная обработка ===");
+        Class<?>[] classes = {
+                DataService.class,
+                SessionManager.class,
+                DefaultCacheClass.class,
+                NoCacheClass.class
+        };
+
+        for (Class<?> clazz : classes) {
+            Processor.AnnotationCache(clazz);
+        }
     }
 
     // ----------------------------=2.1=------------------------------------------

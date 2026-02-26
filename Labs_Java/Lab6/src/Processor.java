@@ -7,7 +7,7 @@ public class Processor {
         Class<?> clazz = obj.getClass();
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
-            // Проверяем, есть ли аннотация @Invoke
+            // Проверяем, есть ли аннотация @Invoke у класса
             if (method.isAnnotationPresent(Invoke.class)) {
                 try {
                     method.setAccessible(true);
@@ -22,7 +22,6 @@ public class Processor {
     public static void processDefault(Class<?> clazz) {
         // Проверяем, есть ли аннотация @Default у класса
         if (clazz.isAnnotationPresent(Default.class)) {
-            // Получаем аннотацию
             Default ann = clazz.getAnnotation(Default.class);
 
             Class<?> defaultClass = ann.value();
@@ -35,8 +34,8 @@ public class Processor {
 
     public static String ToString(Object obj) {
         try {
-            StringBuilder sb = new StringBuilder();
-            sb.append(obj.getClass().getSimpleName()).append("[");
+            String str;
+            str = obj.getClass().getSimpleName() + "[";
 
             // Берём все поля
             Field[] fields = obj.getClass().getDeclaredFields();
@@ -50,14 +49,13 @@ public class Processor {
 
                 // Если аннотации нет или она true - добавляем поле
                 if (ann == null || ann.value() == Mode.YES) {
-                    if (!first) sb.append(", ");
-                    sb.append(field.getName()).append("=").append(field.get(obj));
+                    if (!first) str = str + ", ";
+                    str = str + field.getName() + "=" + field.get(obj);
                     first = false;
                 }
             }
-
-            sb.append("]");
-            return sb.toString();
+            str = str + "]";
+            return str;
         } catch (Exception e) {
             return "Ошибка при преобразовании: " + e.getMessage();
         }
@@ -82,5 +80,39 @@ public class Processor {
         } else {
             System.out.println("Класс " + clazz.getSimpleName() + " не имеет аннотации @Validate");
         }
+    }
+
+    public static void AnnotationTwo(Class<?> clazz) {
+        // Проверяем, есть ли аннотация @Two
+        if (clazz.isAnnotationPresent(Two.class)) {
+            // Получаем аннотацию
+            Two annotation = clazz.getAnnotation(Two.class);
+
+            // Читаем и выводим значения свойств
+            System.out.println("Выводим данные об анотации перед классом:\nfirst = " + annotation.first() + "\nsecond = " + annotation.second());
+        } else {
+            System.out.println("Аннотация @Two не найдена на классе " + clazz.getName());
+        }
+    }
+
+    public static void AnnotationCache(Class<?> clazz) {
+        // Проверяем наличие аннотации @Cache
+        if (clazz.isAnnotationPresent(Cache.class)) {
+            Cache cache = clazz.getAnnotation(Cache.class);
+            String[] cacheAreas = cache.value();
+
+            // Проверяем, пустой ли массив
+            if (cacheAreas.length == 0) {
+                System.out.println("Список кешируемых областей ПУСТ");
+            } else {
+                System.out.println("Кешируемые области (" + cacheAreas.length + "):");
+                for (int i = 0; i < cacheAreas.length; i++) {
+                    System.out.println("    " + (i + 1) + ". " + cacheAreas[i]);
+                }
+            }
+        } else {
+            System.out.println("Аннотация @Cache отсутствует");
+        }
+        System.out.println();
     }
 }

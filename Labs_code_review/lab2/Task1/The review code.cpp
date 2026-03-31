@@ -1,4 +1,4 @@
-﻿/*Дано число D и указатель P1 на вершину непустого стека.
+/*Дано число D и указатель P1 на вершину непустого стека.
 Добавить элемент со значением D в стек и вывести адрес P2 новой вершины стека.
 
 Для каждой динамической структуры должен быть предусмотрен стандартный набор методов -
@@ -38,31 +38,31 @@ int main() {
     std::cin >> choice;
 
     switch (choice) {
-    case 1:
-      std::cout << "Введите число для добавления в стек: ";
-      std::cin >> value;
-      //FIX_ME: нет проверки корректности ввода
-      if (std::cin.fail()) {
-        std::cout << "Ошибка: нужно ввести целое число!\n";
-        return 1;
+      case 1:
+        std::cout << "Введите число для добавления в стек: ";
+        std::cin >> value;
+        //FIX_ME: нет проверки корректности ввода
+        if (std::cin.fail()) {
+          std::cout << "Ошибка: нужно ввести целое число!\n";
+          return 1;
+        }
+        add_element_and_print_address(stack, value);
+        break;
+      case 2:
+        stack.pop();
+        break;
+      case 3:
+        stack.print();
+        break;
+      case 4:
+        stack.clear();
+        break;
+      case 5:
+        std::cout << "Выход из программы.\n";
+        return 0;
+      default:
+        std::cout << "Неверный выбор! Пожалуйста, попробуйте снова.\n";
       }
-      addElementAndPrintAddress(stack, value);
-      break;
-    case 2:
-      stack.pop();
-      break;
-    case 3:
-      stack.print();
-      break;
-    case 4:
-      stack.clear();
-      break;
-    case 5:
-      std::cout << "Выход из программы.\n";
-      return 0;
-    default:
-      std::cout << "Неверный выбор! Пожалуйста, попробуйте снова.\n";
-    }
   }
   return 0;
 }

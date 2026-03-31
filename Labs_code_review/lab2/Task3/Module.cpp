@@ -55,9 +55,10 @@ void LinkedList::read_from_file(const std::string& filename) {
   if (!read_int_from_file(file, N, "Ошибка: Не удалось прочитать N")) return;
 
   int value;
-  for (int i = 0; i < N; ++i) { // Читаем элементы и добавляем их в список
-    if (!read_int_from_file(file, value, "Ошибка: Не удалось прочитать элемент")) return;
-    LinkedList::insert_sorted(value); // Вставляем элемент с сохранением упорядоченности
+  for (int i = 0; i < N; ++i) {
+    if (!read_int_from_file(file, value, 
+      "Ошибка: Не удалось прочитать элемент")) return;
+    LinkedList::insert_sorted(value);
   }
 
   file.close();// Закрываем файл

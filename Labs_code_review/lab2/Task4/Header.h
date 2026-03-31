@@ -4,56 +4,56 @@
 #include <iostream>
 
 struct TNode {
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // int Znachenie;
   int data;
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // TNode* Predydushiy;
   TNode* previous;
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // TNode* Sleduyushiy;
   TNode* next;
 };
 
-// FIX_ME: некорректное название
+// FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
 //class Spisok {
 class LinkedList {
 private:
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // TNode* PerviyElement;
   TNode* head;
 
 public:
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   LinkedList();
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   //void Ochistka() {
   void clear();
 
-  // FIX_ME: некорректное название 
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ 
   //void DobavitElement(int Znachenie) {
   void add(int value);
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // void VivodSpiska() {
   void print();
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // void PoiskMinMax(Uzel*& Min, Uzel*& Max) {
   void find_min_and_max(TNode*& min_node, TNode*& max_node);
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // bool ProverkaPoryadka(TNode* A, TNode* B) {
   bool is_first_before_second(TNode* a, TNode* b);
 
-  // FIX_ME: некорректное название
+  // FIX_ME: РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РЅР°Р·РІР°РЅРёРµ
   // void VivodMezhduMinMax() {
   void print_between_min_max();
 
-  // FIX_ME: нет деструктора
+  // FIX_ME: РЅРµС‚ РґРµСЃС‚СЂСѓРєС‚РѕСЂР°
   ~LinkedList();
 };
 

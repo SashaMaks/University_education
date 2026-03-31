@@ -116,7 +116,8 @@ void LinkedList::print_between_min_max() {
   TNode* start = min_first ? min_node : max_node;
   TNode* end = min_first ? max_node : min_node;
 
-  std::cout << "Элементы между " << min_node->data << " и " << max_node->data << ": ";
+  std::cout << "Элементы между " << min_node->data << " и "
+    << max_node->data << ": ";
   // FIX_ME: некорректное название
   //TNode* Tekushiy = start->next;
   TNode* current = start->next;

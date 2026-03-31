@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-//FIX_ME: �������������� Node � TNode
+//FIX_ME: переименование Node в TNode
 //class Node {
 class TNode {
 public:
@@ -22,17 +22,23 @@ public:
 
   LinkedList();
 
-  void insertSorted(int value);
+  //FIX_ME: переименование под вид lower_case_with_underscores
+  //void insertSorted(int value);
+  void insert_sorted(int value);
 
   void print();
 
-  void readFromFile(const std::string& filename);
+  //FIX_ME: переименование под вид lower_case_with_underscores
+  //void readFromFile(const std::string& filename);
+  void read_from_file(const std::string& filename);
 
-  friend void readFromFile(LinkedList& list, const std::string& filename);
+  friend void read_from_file(LinkedList& list, const std::string& filename);
 };
+//FIX_ME: переименование под вид lower_case_with_underscores
+//void readFromFile(LinkedList& list, const std::string& filename);
+void read_from_file(LinkedList& list, const std::string& filename);
 
-void readFromFile(LinkedList& list, const std::string& filename);
-
+//FIX_ME: функция, для чтения из файла
 bool read_int_from_file(std::ifstream& file, int& value,
   const std::string& errorMsg);
 

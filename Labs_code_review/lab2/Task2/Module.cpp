@@ -11,25 +11,27 @@ bool is_number(const std::string& str) {
 
 Queue::Queue() : P1(nullptr), P2(nullptr) {}
 
-void Queue::push(int num) { // Добавление элемента в очередь
-  TNode* newNode = new TNode;
-  newNode->data = num;
-  newNode->next = nullptr;
+void Queue::push(int num) {
+  // FIX_ME: должно быть в виде lower_case_with_underscores
+  // TNode* newNode = new TNode;
+  TNode* new_node = new TNode;
+  new_node->data = num;
+  new_node->next = nullptr;
   //FIX_ME: проверка, что очередь не пустая лучше делать через nullptr
   //if (!P2) {
   if (P2 == nullptr) {
-    P1 = P2 = newNode;
+    P1 = P2 = new_node;
   }
   else {
-    P2->next = newNode;
-    P2 = newNode;
+    P2->next = new_node;
+    P2 = new_node;
   }
   //FIX_ME: расходуется лишняя память:
   //newNode->next = nullptr;
 }
 
 void Queue::show() { // Вывод элементов
-  if (P1==nullptr) {
+  if (P1 == nullptr) {
     std::cout << "Очередь пустая\n";
     return;
   }
@@ -82,15 +84,15 @@ Queue::TNode* Queue::get_p1() const {
 //FIX_ME: переименование под вид lower_case_with_underscores
 //void Queue::getP1data() const;
 void Queue::get_p1_data() const {
-  int num1 = P1->data;
-  std::cout << num1;
+  int num = P1->data;
+  std::cout << num;
 }
 
 //FIX_ME: переименование под вид lower_case_with_underscores
 //void Queue::getP2data() const {
 void Queue::get_p2_data() const {
-  int num1 = P2->data;
-  std::cout << num1;
+  int num = P2->data;
+  std::cout << num;
 }
 
 //FIX_ME: переименование под вид lower_case_with_underscores

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-//FIX_ME: переименование Node в TNode по условию задачи
+//FIX_ME: РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ Node РІ TNode РїРѕ СѓСЃР»РѕРІРёСЋ Р·Р°РґР°С‡Рё
 //class Node {
 class TNode {
 public:
@@ -18,31 +18,30 @@ private:
   TNode* top;
 
 public:
-
   Stack();
 
-  // FIX_ME: отсутствует деструктор 
+  // FIX_ME: РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РґРµСЃС‚СЂСѓРєС‚РѕСЂ 
   ~Stack();
 
-  //  для добавления элемента в стек
+  //  РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ СЃС‚РµРє
   void push(int value);
 
-  // Метод для удаления элемента из стека
+  // РњРµС‚РѕРґ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РёР· СЃС‚РµРєР°
   void pop();
-
 
   void print();
 
+  //FIX_ME: РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ РїРѕРґ РІРёРґ lower_case_with_underscores
+  TNode* get_top();
 
-  TNode* getTop();
-
-  //FIX_ME: переименование
+  //FIX_ME: РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ
   //void clearStack();
   void clear();
 
-  friend void addElementAndPrintAddress(Stack& stack, int D);
+  friend void add_element_and_print_address(Stack& stack, int D);
 };
 
-void addElementAndPrintAddress(Stack& stack, int D);
+//FIX_ME: РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ РїРѕРґ РІРёРґ lower_case_with_underscores
+void add_element_and_print_address(Stack& stack, int D);
 
 #endif

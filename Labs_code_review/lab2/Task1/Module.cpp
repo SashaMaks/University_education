@@ -4,38 +4,38 @@ TNode::TNode(int value) : data(value), next(nullptr) {}
 
 Stack::Stack() : top(nullptr) {}
 
-// FIX_ME: отсутствует деструктор 
+// FIX_ME: РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РґРµСЃС‚СЂСѓРєС‚РѕСЂ 
 Stack::~Stack() {
   clear();
 }
 
-// для добавления элемента в стек
+// РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ СЃС‚РµРє
 void Stack::push(int value) {
   TNode* newNode = new TNode(value);
   newNode->next = top;
   top = newNode;
-  std::cout << "Элемент " << value << " добавлен в стек.\n";
+  std::cout << "Р­Р»РµРјРµРЅС‚ " << value << " РґРѕР±Р°РІР»РµРЅ РІ СЃС‚РµРє.\n";
 }
 
-// Метод для удаления элемента из стека
+// РњРµС‚РѕРґ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РёР· СЃС‚РµРєР°
 void Stack::pop() {
   if (top == nullptr) {
-    std::cout << "Стек пуст! Невозможно удалить элемент.\n";
+    std::cout << "РЎС‚РµРє РїСѓСЃС‚! РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚.\n";
     return;
   }
   TNode* temp = top;
   top = top->next;
-  std::cout << "Элемент " << temp->data << " удален из стека.\n";
+  std::cout << "Р­Р»РµРјРµРЅС‚ " << temp->data << " СѓРґР°Р»РµРЅ РёР· СЃС‚РµРєР°.\n";
   delete temp;
 }
 
 void Stack::print() {
   if (top == nullptr) {
-    std::cout << "Стек пуст!\n";
+    std::cout << "РЎС‚РµРє РїСѓСЃС‚!\n";
     return;
   }
   TNode* current = top;
-  std::cout << "Элементы стека: ";
+  std::cout << "Р­Р»РµРјРµРЅС‚С‹ СЃС‚РµРєР°: ";
   while (current != nullptr) {
     std::cout << current->data << " ";
     current = current->next;
@@ -44,22 +44,22 @@ void Stack::print() {
 }
 
 
-TNode* Stack::getTop() {
+TNode* Stack::get_top() {
   return top;
 }
 
-//FIX_ME: переименование
+//FIX_ME: РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ
 //void clearStack() { 
 void Stack::clear() {
   while (top != nullptr) {
     TNode* temp = top;
     top = top->next;
-    delete temp;                 // Удаляем узел
+    delete temp;                 // РЈРґР°Р»СЏРµРј СѓР·РµР»
   }
-  std::cout << "Стек очищен.\n";
+  std::cout << "РЎС‚РµРє РѕС‡РёС‰РµРЅ.\n";
 }
 
-void addElementAndPrintAddress(Stack& stack, int D) {
+void add_element_and_print_address(Stack& stack, int D) {
   stack.push(D);
-  std::cout << "Адрес новой вершины стека: " << stack.getTop() << '\n';
+  std::cout << "РђРґСЂРµСЃ РЅРѕРІРѕР№ РІРµСЂС€РёРЅС‹ СЃС‚РµРєР°: " << stack.get_top() << '\n';
 }

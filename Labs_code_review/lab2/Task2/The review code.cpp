@@ -1,4 +1,4 @@
-﻿/* Даны указатели P1 и P2 на начало и конец непустой очереди. Извлекать из очереди
+/* Даны указатели P1 и P2 на начало и конец непустой очереди. Извлекать из очереди
 элементы, пока значение начального элемента очереди не станет четным, и выводить значения
 извлеченных элементов(если очередь не содержит элементов с четными значениями, то извлечь
 все ее элементы).Вывести также новые адреса начала и конца очереди(для пустой очереди
@@ -30,7 +30,6 @@
 int main() {
   setlocale(LC_ALL, "ru");
   Queue q;
-  std::string in;
   std::string inum;
   int num, n, choice;
 
@@ -82,124 +81,119 @@ int main() {
     std::cout << "6 — Показать P1 и P2 (адреса и значения)\n";
     std::cout << "0 — Выход\n";
     std::cout << "Ваш выбор: ";
-    std::cin >> in;
 
     // FIX_ME: проверка ввода
-    if (!is_number(in)) {
-      std::cout << "Недопустимое значение. Введите число.\n";
+    if (!(std::cin >> choice)) {
+      std::cout << "Некорректный ввод, попробуйте заново\n";
+      std::cin.clear();
+      std::cin.ignore(10000, '\n');
       continue;
     }
 
-    choice = std::stoi(in);
-
     switch (choice) {
-      case 1: {
-        q.clear();
+    case 1: {
+      q.clear();
 
-        std::cout << "Введите количество элементов в очереди: ";
-        std::cin >> in;
-
-        if (!is_number(in)) {
-          std::cout << "Недопустимое значение.\n";
-          break;
-        }
-
-        n = std::stoi(in);
-        if (n <= 0) {
-          std::cout << "Количество должно быть больше 0.\n";
-          break;
-        }
-
-        std::cout << "Введите " << n << " элементов очереди: ";
-        for (int i = 1; i <= n; ++i) {
-          std::cin >> inum;
-          if (!is_number(inum)) {
-            std::cout << "Недопустимое значение. Создание очереди отменено.\n";
-            q.clear();
-            break;
-          }
-          num = std::stoi(inum);
-          q.push(num);
-        }
-        std::cout << "Очередь создана.\n";
-        break;
+      int N;
+      std::cout << "Введите количество элементов в очереди: ";
+      if (!(std::cin >> N) || N <= 0) {
+        std::cout << "Недопустимое значение.\n";
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        continue;
       }
-      case 2: {
-        std::cout << "Текущая очередь: ";
-        q.show();
-        break;
-      }
-      case 3: {
-        std::cout << "Введите число для добавления: ";
-        std::cin >> inum;
 
-        if (!is_number(inum)) {
-          std::cout << "Недопустимое значение.\n";
+      std::cout << "Введите " << N << " элементов очереди: ";
+      for (int i = 1; i <= N; ++i) {
+        int num;
+        if (!(std::cin >> num)) {
+          std::cout << "Недопустимое значение. Создание очереди отменено.\n";
+          std::cin.clear();
+          std::cin.ignore(10000, '\n');
+          q.clear();
           break;
         }
-
-        num = std::stoi(inum);
         q.push(num);
-        std::cout << "Элемент " << num << " добавлен в конец очереди.\n";
+      }
+      std::cout << "Очередь создана.\n";
+      break;
+    }
+    case 2: {
+      std::cout << "Текущая очередь: ";
+      q.show();
+      break;
+    }
+    case 3: {
+      std::cout << "Введите число для добавления: ";
+      std::cin >> inum;
+
+      if (!is_number(inum)) {
+        std::cout << "Недопустимое значение.\n";
         break;
       }
-      case 4: {
-        if (q.get_p1() == nullptr) {
-          std::cout << "Очередь пуста. Нечего извлекать.\n";
-          break;
-        }
 
-        int extracted;
-        q.pop(extracted);
-        std::cout << "Извлечен элемент: " << extracted << '\n';
+      num = std::stoi(inum);
+      q.push(num);
+      std::cout << "Элемент " << num << " добавлен в конец очереди.\n";
+      break;
+    }
+    case 4: {
+      if (q.get_p1() == nullptr) {
+        std::cout << "Очередь пуста. Нечего извлекать.\n";
         break;
       }
-      case 5: {
-        if (q.get_p1() == nullptr) {
-          std::cout << "Очередь пуста. Нечего извлекать.\n";
-          break;
-        }
 
-        std::cout << "Извлеченные элементы: ";
-        q.even_head();
-
-        std::cout << "\nРезультат после EvenHead:\n";
-        std::cout << "  P1 (адрес): " << q.get_p1() << '\n';
-        std::cout << "  P1 (значение): ";
-        q.get_p1_data();
-        std::cout << '\n';
-
-        std::cout << "  P2 (адрес): " << q.get_p2() << '\n';
-        std::cout << "  P2 (значение): ";
-        q.get_p2_data();
-        std::cout << '\n';
-
-        if (q.get_p1() == nullptr) {
-          std::cout << "\n!!! Очередь стала пустой !!!\n";
-          std::cout << "P1 = nullptr, P2 = nullptr\n";
-        }
+      int extracted;
+      q.pop(extracted);
+      std::cout << "Извлечен элемент: " << extracted << '\n';
+      break;
+    }
+    case 5: {
+      if (q.get_p1() == nullptr) {
+        std::cout << "Очередь пуста. Нечего извлекать.\n";
         break;
       }
-      case 6: {
-        std::cout << "-----------------------------------------\n";
-        std::cout << "P1 (адрес): " << q.get_p1() << '\n';
-        std::cout << "P1 (значение): ";
-        q.get_p1_data();
 
-        std::cout << "\nP2 (адрес): " << q.get_p2() << '\n';
-        std::cout << "P2 (значение): ";
-        q.get_p2_data();
-        std::cout << "\n-----------------------------------------\n";
-        break;
+      std::cout << "Извлеченные элементы: ";
+      q.even_head();
+
+      std::cout << "\nРезультат после EvenHead:\n";
+      std::cout << "  P1 (адрес): " << q.get_p1() << '\n';
+      std::cout << "  P1 (значение): ";
+      q.get_p1_data();
+      std::cout << '\n';
+
+      std::cout << "  P2 (адрес): " << q.get_p2() << '\n';
+      std::cout << "  P2 (значение): ";
+      q.get_p2_data();
+      std::cout << '\n';
+
+      if (q.get_p1() == nullptr) {
+        std::cout << "\n!!! Очередь стала пустой !!!\n";
+        std::cout << "P1 = nullptr, P2 = nullptr\n";
       }
-      case 0: {
-        std::cout << "Выход из программы.\n";
-        return 0;
-      }
-      default: {
-        std::cout << "Нет такого пункта. Выберите 0-6.\n";
-        break;
-      }
+      break;
+    }
+    case 6: {
+      std::cout << "-----------------------------------------\n";
+      std::cout << "P1 (адрес): " << q.get_p1() << '\n';
+      std::cout << "P1 (значение): ";
+      q.get_p1_data();
+
+      std::cout << "\nP2 (адрес): " << q.get_p2() << '\n';
+      std::cout << "P2 (значение): ";
+      q.get_p2_data();
+      std::cout << "\n-----------------------------------------\n";
+      break;
+    }
+    case 0: {
+      std::cout << "Выход из программы.\n";
+      return 0;
+    }
+    default: {
+      std::cout << "Нет такого пункта. Выберите 0-6.\n";
+      break;
+    }
     }
   }
 

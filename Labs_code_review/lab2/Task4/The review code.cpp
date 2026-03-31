@@ -71,6 +71,8 @@ int main() {
 
     if (!(std::cin >> choice)) {
       std::cout << "Некорректный ввод, попробуйте заново\n";
+      std::cin.clear();
+      std::cin.ignore(10000, '\n');
       continue;
     }
 
@@ -91,9 +93,10 @@ int main() {
         for (int i = 0; i < N; i++) {
           int num;
           if (!(std::cin >> num)) {
-            std::cout << "Ошибка ввода!\n";
+            std::cout << "Недопустимое значение. Создание списка отменено.\n";
             std::cin.clear();
             std::cin.ignore(10000, '\n');
+            my_list.clear();
             break;
           }
           my_list.add(num);

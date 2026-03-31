@@ -18,17 +18,17 @@
 /*int backpack(int W, std::vector<int>& wt, std::vector<int>& val, int n) {
 
     std::vector<std::vector<int>> dp(n + 1, std::vector<int>(W + 1));
-    // Çàïîëíåíèå òàáëèöû
+    // Заполнение таблицы
     for (int i = 0; i <= n; i++) {
         for (int w = 0; w <= W; w++) {
             if (i == 0 || w == 0)
-                dp[i][w] = 0; // íåò ïðåäìåòîâ èëè âåñ ðþêçàêà ðàâåí 0
+                dp[i][w] = 0; // нет предметов или вес рюкзака равен 0
             else if (wt[i - 1] <= w)
-                // Âûáîð ìåæäó âêëþ÷åíèåì è èñêëþ÷åíèåì òåêóùåãî ïðåäìåòà
+                // Выбор между включением и исключением текущего предмета
                 dp[i][w] = std::max(val[i - 1] + dp[i - 1][w - wt[i - 1]],
                 dp[i - 1][w]);
             else
-                // Òåêóùèé ïðåäìåò íå âìåùàåòñÿ â ðþêçàê
+                // Текущий предмет не вмещается в рюкзак
                 dp[i][w] = dp[i - 1][w];
         }
     }
@@ -77,7 +77,7 @@ bool ReadPositiveInt(std::ifstream& file, int& value,
     return false;
   }
   if (value <= 0) {
-    std::cout << "Îøèáêà: Çíà÷åíèå äîëæíî áûòü ïîëîæèòåëüíûì\n";
+    std::cout << "Ошибка: Значение должно быть положительным\n";
     return false;
   }
   return true;

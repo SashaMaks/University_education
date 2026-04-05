@@ -11,9 +11,11 @@ Stack::~Stack() {
 
 // для добавления элемента в стек
 void Stack::push(int value) {
-  TNode* newNode = new TNode(value);
-  newNode->next = top;
-  top = newNode;
+  // FIX_ME: должно быть в виде lower_case_with_underscores
+  //TNode* newNode = new TNode(value);
+  TNode* new_node = new TNode(value);
+  new_node->next = top;
+  top = new_node;
   std::cout << "Элемент " << value << " добавлен в стек.\n";
 }
 

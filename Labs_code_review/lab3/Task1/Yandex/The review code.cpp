@@ -24,17 +24,17 @@ int main() {
   std::string password;
   switch (choice) {
   case 1:
-    password = generatePassword(8, level1);
+    password = generate_password(8, level1);
     break;
   case 2:
-    password = generatePassword(12, level2);
+    password = generate_password(12, level2);
     break;
   case 3:
-    password = generatePassword(16, level3);
+    password = generate_password(16, level3);
     break;
   default:
     std::cout << "Неверный выбор! Используется уровень 2.\n";
-    password = generatePassword(12, level2);
+    password = generate_password(12, level2);
     break;
   }
 

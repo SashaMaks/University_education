@@ -6,6 +6,8 @@
 #include <random>
 #include <ctime>
 
-std::string generatePassword(int length, const std::string& charset);
+//FIX_ME: Имена функций и методов: lower_case_with_underscores
+//std::string generatePassword(int length, const std::string& charset);
+std::string generate_password(int length, const std::string& charset);
 
 #endif

@@ -43,7 +43,7 @@ int main() {
     return 1;
   }
 
-  std::string password = generate_password(length, use_upper, use_digits, 
+  std::string password = generate_password(length, use_upper, use_digits,
     use_symbols);
   std::cout << "Ваш новый пароль: " << password << "\n";
 

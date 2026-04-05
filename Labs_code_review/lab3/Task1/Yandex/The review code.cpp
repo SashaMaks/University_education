@@ -8,10 +8,11 @@ int main() {
   //FIX_ME: для верного отображения русского
   setlocale(LC_ALL, "ru");
 
-  // Наборы символов для разных уровней сложности
-  const std::string level1 = "abcdefghijklmnopqrstuvwxyz"; // Только строчные буквы
-  const std::string level2 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Строчные, прописные буквы и цифры
-  const std::string level3 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?"; // Все символы
+  const std::string level1 = "abcdefghijklmnopqrstuvwxyz";
+  const std::string level2 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV"
+    "WXYZ0123456789";
+  const std::string level3 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV"
+    "WXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
 
   int choice;
   std::cout << "Выберите уровень сложности пароля:\n";

@@ -21,7 +21,8 @@ public:
 
   //FIX_ME: Имена функций и методов: lower_case_with_underscores
   //std::string generatePassword(int length, bool useUpper, bool useDigits, bool useSpecial) {
-  std::string generate_password(int length, bool useUpper, bool useDigits, bool useSpecial);
+  std::string generate_password(int length, bool useUpper,
+bool useDigits, bool useSpecial);
 
   //FIX_ME: Имена функций и методов: lower_case_with_underscores
   //char getRandomChar(const std::string& str) {

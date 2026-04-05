@@ -1,76 +1,9 @@
 ﻿//DeepSeek
 
-#include <iostream>
-#include <string>
-#include <random>
-#include <ctime>
-#include <algorithm>
+//FIX_ME: использование endl медленее, чем \n
+//FIX_ME: исправлена табуляция с tab на 2 пробела
 
-class PasswordGenerator {
-private:
-  // Наборы символов
-  const std::string lowercase = "abcdefghijklmnopqrstuvwxyz";
-  const std::string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const std::string digits = "0123456789";
-  const std::string special = "!@#$%^&*()_+-=[]{}|;:,.<>?";
-
-  std::mt19937 rng;
-
-public:
-  PasswordGenerator() {
-    rng.seed(std::time(nullptr));
-  }
-
-  // FIX_ME: 
-  std::string generatePassword(int length, bool useUpper, bool useDigits, bool useSpecial) {
-    std::string charset = lowercase;
-    if (useUpper) charset += uppercase;
-    if (useDigits) charset += digits;
-    if (useSpecial) charset += special;
-
-    if (charset.empty()) return "";
-
-    std::uniform_int_distribution<int> dist(0, charset.size() - 1);
-    std::string password;
-
-    // Гарантируем хотя бы один символ из каждого выбранного набора
-    if (useUpper) password += getRandomChar(uppercase);
-    if (useDigits) password += getRandomChar(digits);
-    if (useSpecial) password += getRandomChar(special);
-    password += getRandomChar(lowercase); // хотя бы одна строчная буква
-
-    // Заполняем остальные символы
-    while (password.length() < length) {
-      password += charset[dist(rng)];
-    }
-
-    // Перемешиваем пароль
-    std::shuffle(password.begin(), password.end(), rng);
-
-    return password;
-  }
-
-  char getRandomChar(const std::string& str) {
-    std::uniform_int_distribution<int> dist(0, str.size() - 1);
-    return str[dist(rng)];
-  }
-
-  // Генерация пароля для слабого уровня
-  std::string generateWeak() {
-    return generatePassword(8, false, true, false);
-  }
-
-  // Генерация пароля для среднего уровня
-  std::string generateMedium() {
-    return generatePassword(12, true, true, false);
-  }
-
-  //FIX_ME: Имена функций и методов: lower_case_with_underscores
-  //std::string generateStrong() {
-  std::string generate_strong() {
-    return generatePassword(16, true, true, true);
-  }
-};
+#include "Header.h"
 
 int main() {
   //FIX_ME: для верного показа русской раскладки
@@ -103,22 +36,22 @@ int main() {
     std::cout << "Ваш выбор (1-3): ";
     std::cin >> choice;
 
-    std::cout << "\n";
+    std::cout << '\n';
 
     std::string password;
 
     switch (choice) {
     case 1:
-      password = pg.generateWeak();
-      std::cout << "СЛАБЫЙ ПАРОЛЬ (8 символов): " << password << std::endl;
+      password = pg.generate_weak();
+      std::cout << "СЛАБЫЙ ПАРОЛЬ (8 символов): " << password << '\n';
       break;
     case 2:
-      password = pg.generateMedium();
-      std::cout << "СРЕДНИЙ ПАРОЛЬ (12 символов): " << password << std::endl;
+      password = pg.generate_medium();
+      std::cout << "СРЕДНИЙ ПАРОЛЬ (12 символов): " << password << '\n';
       break;
     case 3:
       password = pg.generate_strong();
-      std::cout << "СИЛЬНЫЙ ПАРОЛЬ (16 символов): " << password << std::endl;
+      std::cout << "СИЛЬНЫЙ ПАРОЛЬ (16 символов): " << password << '\n';
       break;
     default:
       std::cout << "Неверный выбор! Пожалуйста, выберите 1, 2 или 3.\n";
@@ -127,7 +60,7 @@ int main() {
 
     std::cout << "\nСгенерировать ещё один пароль? (y/n): ";
     std::cin >> generate_again;
-    std::cout << "\n";
+    std::cout << '\n';
 
   } while (generate_again == 'y' || generate_again == 'Y');
 
